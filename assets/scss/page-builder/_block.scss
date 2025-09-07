@@ -1,0 +1,33 @@
+/*--------------------------------------------------------------
+# Layout Builder Global Block styles
+--------------------------------------------------------------*/
+
+.building--block {
+	width: 100%;
+	height: auto;
+	position: relative;
+	padding-top: calc( var(--padding-container) * 1.5 );
+	padding-bottom: var(--padding-container);
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--padding-vertical, 4rem) Max(2rem, 2.5vmax);
+
+	@media (min-width: $sm) { 
+		padding-top: var(--padding-container);
+		padding-bottom: var(--padding-container);
+	}
+
+	@media (min-width: $lg) {
+		grid-template-columns: repeat(8, 1fr);
+	}
+
+	@media (min-width: $lg) {
+		gap: Max(2rem, 2.5vmax);
+	}
+	
+	.building--row.cols-50-50 & {
+		@media (min-width: $lg) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+}

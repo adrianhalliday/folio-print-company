@@ -1,0 +1,228 @@
+footer.building--row {
+
+	ul, li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	p {
+		@media (min-width: $lg) { max-width: 22ch; }
+
+		&:last-child { margin-bottom: 0; }
+	}
+	
+	.footer {
+		&--upper {
+			padding-bottom: 0;
+
+			@media (min-width: $lg) {
+				padding-top: calc(var(--padding-container) + var(--nav-height));
+				padding-bottom: 0;
+			}
+
+			@media (min-width: $lg) and (max-height: 829px) {
+				padding-bottom: calc(var(--padding-container) * .5);
+			}
+
+			svg {
+				grid-column: 1 / -1;
+			}
+
+			.page-contact & {
+				display: none;
+			}
+		}
+
+		&--lower {
+			.divider--line {
+				@media (max-width: $max-lg) { opacity: 0; }
+				grid-column: 1 / -1;
+				grid-row: 1;
+			}
+
+			.page-contact & {
+				@media (max-width: $max-lg) { padding-top: 0; }
+			}
+		}
+
+		&--link {
+			position: relative;
+
+			span {
+				background: $black;
+				background: linear-gradient(90deg, $violet 0%, $violet 50%, $black 50%, $black 100%);
+				background-size: 220% 100%;
+				background-position: 100% 50%;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				transition: background-position 0.4s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+			}
+			
+			&:hover span {
+				background-position: 0% 50%;
+			}
+
+			&:after {
+				display: inline-block;
+				position: absolute;
+				right: -2ch;
+				font-size: 0.7em;
+				top: 0;
+				color: $white;
+				transition: right .18s linear 0s, color 0.1s linear 0s;
+			}
+
+			&.internal:after {
+				content: "→";
+			}
+			&.internal:hover:after {
+				color: $violet;
+				right: -2.01ch;
+				transition: right .18s cubic-bezier(0.1,24,0.8,24) .4s, color 0.1s linear .4s;
+			}
+
+			&.external:after {
+				content: "↗";
+			}
+			&.external:hover:after {
+				color: $violet;
+				transform: translate(0.2ch, -0.2ch);
+				transition: transform .18s cubic-bezier(0.1,2,0.8,2) .4s, color 0.1s linear .4s;
+			}
+		}
+
+		&--vertical-divider {
+			display: none;
+
+			@media (min-width: $lg) {
+				display: block;
+				width: 1px;
+				background-color: $black;
+				grid-column: 6;
+				grid-row: 1 / span 3;
+				justify-self: end;
+			}
+		}
+
+		&--contact,
+		&--content,
+		&--socials,
+		&--menu,
+		&--copyright,
+		&--message,
+		&--spacer {
+			grid-column: 1 / -1;
+		}
+
+		&--contact {
+			.page-contact & {
+				@media (max-width: $max-lg) { display: none; }
+			}
+
+			@media (min-width: $md) {
+				grid-column: 1 / span 2;
+				grid-row: 1;
+			}
+
+			@media (min-width: $lg) {
+				grid-column: 1 / span 2;
+				grid-row: 2;
+			}
+		}
+		&--socials {
+			@media (min-width: $lg) {
+				grid-column: 3 / span 2;
+				grid-row: 2;
+			}
+		}
+		&--menu {
+			display: none;
+
+			@media (min-width: $lg) {
+				display: block;
+				grid-column: 5 / span 2;
+				grid-row: 2;
+			}
+		}
+		&--content {
+			@media (min-width: $md) {
+				grid-column: 3 / span 2;
+				grid-row: 1;
+			}
+			@media (min-width: $lg) {
+				grid-column: 7 / span 2;
+				grid-row: 2;
+			}
+		}
+		&--copyright {
+			p { max-width: unset; margin-bottom: 0; }
+
+			@media (min-width: $lg) {
+				grid-column: 1 / span 6;
+				grid-row: 3;
+			}
+		}
+		&--message {
+			p { max-width: unset; margin-bottom: 0; }
+
+			@media (min-width: $lg) {
+				grid-column: 7 / span 2;
+				grid-row: 3;
+			}
+		}
+	}
+
+	#page:not(.page-contact) & {
+		@media (min-width: $lg) and (min-height: 830px) {
+			display: grid;
+			grid-template-rows: auto auto;
+			height: 100vh;
+			height: var(--100vh);
+		}
+
+		&#footer {
+			@media (min-width: $lg) and (min-height: 830px) {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				z-index: 0;
+			}
+		}
+		
+		&#footer-spacer {
+			display: none;
+	
+			@media (min-width: $lg) and (min-height: 830px) {
+				display: block;
+				visibility: hidden;
+				pointer-events: none;
+				opacity: 0;
+			}
+		}
+	}
+
+	.page-contact & {
+		&#footer-spacer {
+			display: none!important;
+		}
+
+		@media (min-width: $md) and (max-width: $lg) {
+
+			.footer--lower {
+				grid-template-columns: repeat(6, 1fr);
+			}
+			
+			.footer--content {
+				grid-column: 1 / span 4;
+				grid-row: 1;
+			}
+
+			.footer--socials {
+				grid-column: 5 / span 2;
+				grid-row: 1;
+			}
+		}
+	}
+}

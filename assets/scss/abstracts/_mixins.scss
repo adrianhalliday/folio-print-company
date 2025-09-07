@@ -1,0 +1,50 @@
+//  font-sizes($font_sm, $font_med, $font_lg, $font_xl, $font_xxl)
+@mixin font-sizes($font_xs:null, $font_sm:null, $font_med:null, $font_lg:null, $font_xl:null, $font_xxl:null) {
+	font-size: $font_xs;
+
+	@if $font_sm {
+		@media(min-width: $sm) {
+			font-size: $font_sm;
+		}
+	}
+
+	@if $font_med {
+		@media(min-width: $md) {
+			font-size: $font_med;
+		}
+	}
+
+	@if $font_lg {
+		@media(min-width: $lg) {
+			font-size: $font_lg;
+		}
+	}
+
+	@if $font_xl {
+		@media(min-width: $xl) {
+			font-size: $font_xl;
+		}
+	}
+
+	@if $font_xxl {
+		@media(min-width: $xxl) {
+			font-size: $font_xxl;
+		}
+	}
+}
+
+@mixin flex($direction, $wrap:null, $justify:null, $align:null) {
+	display: flex;
+	flex-direction: $direction;
+	@if $wrap { flex-wrap: $wrap; }
+	@if $justify { justify-content: $justify; }
+	@if $align { align-items: $align; }
+}
+
+@mixin absoluteFull() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

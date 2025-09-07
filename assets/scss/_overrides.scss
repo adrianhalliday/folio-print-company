@@ -1,0 +1,17 @@
+/*--------------------------------------------------------------
+# Over-rides for individual builder sections or pages
+--------------------------------------------------------------*/
+
+#the-difference-is-clear {
+	@media (max-width: $max-lg) {
+		.building--block.section-heading {
+			.divider--line { display: none; }
+		}
+	}
+}
+
+.page-forever-new {
+	.building--row:nth-child(2) span.animated-text {
+		margin-left: -0.35ch;
+	}
+}

@@ -1,0 +1,583 @@
+header {
+	position: fixed;
+	top: 0; left: 0;
+	width: 100%;
+	z-index: 1000;
+	padding: 0 2rem;
+
+	span { margin: 0; }
+
+	@media (min-width: $sm) {
+		padding: Min(2rem, 2vh) 2rem 0;
+	}
+
+	@media (min-width: $md) {
+		padding: Min(3rem, 2vh) var(--padding-container) 0;
+	}
+
+	
+	&.opacity {
+		&-0 { 
+			opacity: 0; 
+			transition: background-color 0.3s ease, opacity 0.2s ease-in-out;
+		}
+		&-1 { 
+			opacity: 1; 
+			transition: background-color 0.3s ease, opacity 0.4s ease-in-out 0.7s;
+		}
+	}
+
+	.header {
+		&--container {
+			width: 100%;
+			position: relative;
+			display: grid;
+			align-items: center;
+			grid-template-columns: clamp(110px, 18vw, 210px) 1fr clamp(110px, 18vw, 210px);
+		}
+
+		&--logo {
+			&--container {
+				.cube--scene { 
+					width: clamp(110px, 18vw, 210px); 
+					text-align: left;
+
+					&--face {
+						justify-content: start;
+					}
+				}
+			}
+
+			&--link {
+				width: 100%;
+				display: block;
+
+				svg { 
+					width: 100%;
+					display: block; 
+				}
+			}
+		}
+
+		&--contact-link {
+			text-align: right;
+		}
+
+		&--menu {
+			.header--menu--link {
+				&:nth-last-child(n+2) { 
+					padding-right: 1.3ch;
+					
+					&:after {
+						content: "/";
+						padding-left: 1ch;
+						display: inline-block;
+					}
+				}
+			}
+
+			&--container {
+				.cube--scene { display: none; }
+
+				@media (min-width: $md) {
+					.cube--scene { display: block; }
+				}
+			}
+
+			&--link {
+				display: inline-block;
+				@include font-sizes(2rem, 2rem, 2rem, Max(1.4vw, 2.2rem));
+				font-weight: 500;
+				cursor: pointer;
+
+				a {
+					display: inline-block;
+					position: relative;
+					color: $black;
+
+					&:before {
+						content: '';
+						display: block;
+						position: absolute;
+						width: 100%;
+						height: 2px;
+						background-color: transparent;
+						bottom: calc((60px - 100%) / -2);
+						left: 0;
+					}
+
+					&:hover:before {
+						transition: background-color 0.3s ease;
+					}
+				}
+				
+				a:hover:before,
+				a.nuxt-link-exact-active:before {
+					background-color: $black;
+				}
+			}
+		}
+
+		&--modal {
+			position: fixed;
+			left: 0;
+			bottom: 105%;
+			width: 100%;
+			height: 100%;
+			transition: bottom 1s cubic-bezier(0.08, 0.82, 0.17, 1);
+			z-index: -1;
+			padding: 9rem var(--padding-container) var(--padding-container);
+
+			@media (min-width: $sm) {
+				padding: 9rem Max(3rem, 5vmin) Max(3rem, 5vmin);
+			}
+
+			@media (min-width: $md) {
+				padding: 9rem Max(3rem, 8vmin) Max(3rem, 8vmin);
+			}
+
+			@media (min-width: $lg) {
+				padding: 9rem Max(4rem, 4vmax) Max(4rem, 4vmax);
+			}
+
+			&.active {
+				bottom: 0;
+
+				.header--modal--link {
+					opacity: 1;
+					transition: opacity .5s ease-out;
+
+					@for $i from 1 through 10 {
+						&:nth-child(#{$i}) {
+							transition-delay: calc(.5s + ($i * .1s));
+						}
+					}
+				}
+
+				.header--menu--link {
+					opacity: 1;
+					transition: opacity .5s ease-out .7s, color 0.3s ease;
+				}
+			}
+
+			display: grid;
+			grid-template-columns: auto;
+			grid-template-rows: 1fr auto;
+			
+			&--menu {
+				display: grid;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+
+			&--footer {
+				@media (max-width: $max_md) {
+					display: grid;
+					grid-template-columns: 1fr;
+					grid-template-rows: 1fr 1fr;
+					gap: 2rem;
+					text-align: center;
+				}
+
+				@media (min-width: $md) {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+				}
+
+				a.header--menu--link, a.header--menu--link span {
+					
+
+					.svg-fill {
+						transition: fill 0.3s ease;
+					}
+
+					.arrow-up { 
+						transform: translateY(0);
+						transition: transform .3s ease, fill 0.3s ease;
+					}
+
+					&:hover {
+						color: $violet;
+
+						.svg-fill { 
+							fill: $violet;
+						}
+
+						.arrow-up {
+							transform: translateY(-1px);
+						}
+					}
+				}
+			}
+
+			&--link {
+				color: $black;
+				font-size: 6vmax;
+				line-height: 1;
+				opacity: 0;
+				transition: opacity 0s linear 0s;
+				position: relative;
+
+				span {
+					font-size: inherit;
+					background: $black;
+					background: linear-gradient(90deg, $violet 0%, $violet 50%, $black 50%, $black 100%);
+					background-size: 220% 100%;
+					background-position: 100% 50%;
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+					transition: background-position 0.4s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+					
+					&:hover {
+						background-position: 0% 50%;
+					}
+				}
+			}
+			
+			.header--menu--link {
+				opacity: 0;
+				transition: opacity 0s linear 0s, color 0.3s ease;
+				@include flex(row,nowrap,flex-start,center);
+				
+				span { 
+					margin-top: 0.2ch;
+					transition: color 0.3s ease;
+				}
+
+				svg {
+					display: inline-block;
+					width: max(1.4vw, 2.2rem);
+					margin-right: .5ch;
+				}
+			}
+		}
+	}
+
+	.cube {
+		width: 100%;
+		height: 60px;
+		position: relative;
+		transform: translateZ(-30px) rotateX(-90deg);
+		pointer-events: none;
+		transform-style: preserve-3d;
+		transition: all 0.4s ease-in-out;
+
+		.safari & {
+			@media (min-width: $md) {
+				perspective: 400px;
+				transform: none!important;
+			}
+		}
+		
+		&--scene {
+			width: 100%;
+			height: 60px;
+			perspective: 400px;
+			transform-style: preserve-3d;
+
+			.safari & {
+				@media (min-width: $md) {
+					display: contents;
+					perspective: none;
+					transform-style: initial;
+				}
+			}
+		}
+
+		&--face {
+			position: absolute;
+			width: 100%;
+			height: 60px;
+			display: flex;
+			align-items: center;
+			backface-visibility: hidden;
+			transition: transform 0.4s ease-in-out, opacity 0.35s ease;
+			opacity: 0;
+			pointer-events: none;
+			
+			.header--menu--link a:before {
+				opacity: 0;
+				transition: opacity 0.1s ease 0s, background-color 0.3s ease;
+			}
+
+			&.header--logo {
+				transform: rotateX(90deg) translateZ(30px);
+			}
+
+			&.header--lang {
+				transform: rotateX(0deg) translateZ(30px);
+			}
+
+			&.header--menu {
+				transform: rotateX(0deg) translateZ(30px);
+			}
+
+			&.modal--trigger {
+				transform: rotateX(90deg) translateZ(30px);
+			}
+
+			&.close {
+				transform: rotateX(180deg) translateZ(30px);
+			}
+
+
+			&.header--menu,
+			&.modal--trigger,
+			&.close {
+				justify-content: center;
+			}
+		}
+
+		&[data-active=logo] {
+			transform: translateZ(-30px) rotateX(-90deg);
+
+			.cube--face.header--logo {
+				opacity: 1;
+				pointer-events: all;
+			}
+
+			.safari & {
+				@media (min-width: $md) {
+					.cube--face.header--logo {
+						transform: rotateX(0deg) translateZ(30px) scale(.92);
+					}
+	
+					.cube--face.header--lang {
+						transform: rotateX(-90deg) translateZ(30px) scale(.92);
+					}
+				}
+			}
+		}
+		
+		&[data-active=lang] {
+			transform: translateZ(-30px) rotateX(0deg);
+
+			.cube--face.header--lang {
+				opacity: 1;
+				pointer-events: all;
+			}
+
+			.safari & {
+				@media (min-width: $md) {
+					.cube--face.header--logo {
+						transform: rotateX(90deg) translateZ(30px) scale(.92);
+					}
+	
+					.cube--face.header--lang {
+						transform: rotateX(0deg) translateZ(30px) scale(.92);
+					}
+				}
+			}
+		}
+
+		&[data-active=header--menu] {
+			transform: translateZ(-30px) rotateX(0deg);
+
+			.cube--face.header--menu {
+				opacity: 1;
+				pointer-events: all;
+				
+				.header--menu--link a:before {
+					opacity: 1;
+					transition: opacity 0.1s ease .35s, background-color 0.3s ease;
+				}
+			}
+
+			.safari & {
+				@media (min-width: $md) {
+					.cube--face.header--menu {
+						transform: rotateX(0deg) translateZ(30px) scale(.92);
+					}
+	
+					.cube--face.modal--trigger {
+						transform: rotateX(90deg) translateZ(30px) scale(.92);
+					}
+	
+					.cube--face.close {
+						transform: rotateX(180deg) translateZ(30px) scale(.92);
+					}
+				}
+			}
+		}
+
+		&[data-active=modal--trigger] {
+			transform: translateZ(-30px) rotateX(-90deg);
+
+			.cube--face.modal--trigger {
+				opacity: 1;
+				pointer-events: all;
+			}
+
+			.safari & {
+				@media (min-width: $md) {
+					.cube--face.header--menu {
+						transform: rotateX(-90deg) translateZ(30px) scale(.92);
+					}
+	
+					.cube--face.modal--trigger {
+						transform: rotateX(0deg) translateZ(30px) scale(.92);
+					}
+	
+					.cube--face.close {
+						transform: rotateX(90deg) translateZ(30px) scale(.92);
+					}
+				}
+			}
+		}
+
+		&[data-active=close] {
+			transform: translateZ(-30px) rotateX(-180deg);
+
+			.cube--face.close {
+				opacity: 1;
+				pointer-events: all;
+			}
+
+			.safari & {
+				@media (min-width: $md) {
+					.cube--face.header--menu {
+						transform: rotateX(-180deg) translateZ(30px) scale(.92);
+					}
+	
+					.cube--face.modal--trigger {
+						transform: rotateX(-90deg) translateZ(30px) scale(.92);
+					}
+	
+					.cube--face.close {
+						transform: rotateX(0deg) translateZ(30px) scale(.92);
+					}
+				}
+			}
+		}
+	}
+
+	.language-picker {
+		@include flex(row, nowrap, flex-start, center);
+		position: relative;
+		height: 100%;
+		width: 100%;
+
+		> span { margin-top: 0.2ch; }
+
+		svg {
+			margin-left: .3ch;
+			display: inline-block;
+			width: max(1.2vw, 1.9rem);
+		}
+
+		&--menu {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			visibility: hidden;
+			opacity: 0;
+			@include flex(row, nowrap, flex-start, center);
+			min-width: 100%;
+			height: 60px;
+			transition: opacity 0.3s ease, visibility 0.3s ease;
+		}
+		&:hover .language-picker--menu {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		&--option {
+			width: auto;
+			span {
+				transition: color 0.2s ease;
+			}
+			
+			&:nth-last-child(n+2) {
+				padding-right: 1ch;
+				
+				&:after {
+					content: '•';
+					color: rgba($black, .3);
+					padding-left: 1ch;
+				}
+			}
+
+			&.active-language span,
+			&:hover span {
+				color: $violet!important;
+			}
+		}
+	}
+
+	.divider--line {
+		@media (max-width: $max-md) {
+			margin-left: -2rem;
+			margin-right: -2rem;
+			width: 100vw;
+		}
+	}
+
+	.royale-with-cheese {
+		height: 28px;
+		width: 36px;
+		margin: auto;
+		display: grid;
+		align-items: center;
+		
+		@media (min-width: $md) {
+			display: none;
+		}
+
+		span {
+			display: block;
+			height: 2px;
+			transition: 0.5s;
+			margin: 0;
+		}
+
+		&.active .top-bun {
+			transform: translateY(9px) rotate(135deg);
+		}
+
+		&.active .bottom-bun {
+			transform: translateY(-9px) rotate(-135deg);
+		}
+
+		&.active .pattie {
+			transform: scale(0);
+		}
+	}
+
+	&.bg {
+		&-black {
+			a:hover:before,
+			a.nuxt-link-exact-active:before {
+				background-color: $white;
+			}
+		}
+
+		@each $label, $map in $bg-colours {
+
+			&-#{$label} {
+				background-color: map-get($map, bg);
+
+				h1, h2, h3, h4, h5, h6, p, .header--menu--link {
+					color: map-get($map, text);
+
+					a, span {
+						color: map-get($map, text);
+					}
+				}
+
+				.divider--line {
+					background-color: map-get($map, divider);
+				}
+
+				.svg-fill {
+					fill: map-get($map, text);
+				}
+
+				.royale-with-cheese span {
+					background-color: map-get($map, text );
+				}
+			}
+		}
+	}
+}

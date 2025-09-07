@@ -1,0 +1,125 @@
+/*--------------------------------------------------------------
+# Theme Colours
+--------------------------------------------------------------*/
+$white: #fff;
+$black: #000000;
+$grey: #bebebe;
+$grey-light: #e8e7e7;
+$lavender: #b2a5c9;
+$violet: #893b94;
+$transparent: transparent;
+
+$bg-colours: (
+	'transparent': (
+		bg: $transparent,
+		text: $black,
+		divider: $black,
+		graphic: $black,
+	),
+	'white': (
+		bg: $white,
+		text: $black,
+		divider: $black,
+		graphic: $lavender,
+	),
+	'black': (
+		bg: $black,
+		text: $white,
+		divider: $white,
+		graphic: $lavender,
+	),
+	'grey': (
+		bg: $grey,
+		text: $black,
+		divider: $black,
+		graphic: $black,
+	),
+	'lavender': (
+		bg: $lavender,
+		text: $black,
+		divider: $black,
+		graphic: $grey-light,
+	),
+);
+
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+$font-main: 'PolySans', 'Helvetica Neue', Helvetica, sans-serif;
+$font-mono: 'PolySans Mono', 'Helvetica Neue', Helvetica, sans-serif;
+$font-mono-slim: 'PolySans Slim Mono', 'Helvetica Neue', Helvetica, sans-serif;
+
+
+
+/*--------------------------------------------------------------
+# Break Points
+--------------------------------------------------------------*/
+
+$max-sm: 607px;
+$sm: 38em; // 608px
+$max-md: 991px;
+$md: 62em; // 992px
+$max-lg: 1199px;
+$lg: 75em; // 1200px
+$max-xl: 1399px;
+$xl: 87.5em; // 1400px
+$max-xxl: 1791px;
+$xxl: 112em; // 1792px
+
+$breakpoints: (
+	'sm': $sm,
+	'md': $md,
+	'lg': $lg,
+	'xl': $xl,
+	'xxl': $xxl,
+);
+
+
+
+/*--------------------------------------------------------------
+# Structure
+--------------------------------------------------------------*/
+
+// Global padding size
+$padding-container: 2rem;
+$padding-container-wide: 7vw;
+$padding-vertical: 12vh;
+
+// Width of centred content on desktop screens
+$centred-content-width: 750px;
+
+$nav-height: 80px;
+$nav-height-lg: 80px;
+
+
+:root {
+	--100vh: 100vh;
+	--nav-height: 61px;
+	--padding-vertical: 6vh;
+	--padding-container: 3rem;
+	--negative-margin: -3rem;
+}
+
+@media (min-width: $sm) {
+	:root {
+		--padding-container: Max(3rem, 5vmin);
+		--negative-margin: Min(-3rem, -5vmin);
+	}
+}
+
+@media (min-width: $md) {
+	:root {
+		--padding-container: Max(3rem, 8vmin);
+		--negative-margin: Min(-3rem, -8vmin);
+	}
+}
+
+@media (min-width: $lg) {
+	:root {
+		--nav-height: calc(61px + min(3rem, 2vh));
+		--padding-vertical: 12vh;
+		--padding-container: Max(4rem, 4vmax);
+		--negative-margin: Min(-4rem, -4vmax);
+	}
+}

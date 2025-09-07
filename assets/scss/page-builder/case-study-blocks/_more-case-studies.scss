@@ -1,0 +1,13 @@
+/*--------------------------------------------------------------
+# more-case-studies
+--------------------------------------------------------------*/
+
+.building--block.more-case-studies {
+	padding-bottom: 0;
+
+	h2 {
+		grid-column: 1 / -1;
+		margin-bottom: 0;
+		max-width: 100%;
+	}
+}

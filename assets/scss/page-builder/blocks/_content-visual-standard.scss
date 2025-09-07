@@ -1,0 +1,72 @@
+/*--------------------------------------------------------------
+# content-visual--standard
+--------------------------------------------------------------*/
+
+.building--block.content-visual--standard {
+	grid-template-rows: auto 1fr auto;
+
+	@media (min-width: $lg) {
+		grid-template-rows: 1fr 1fr;
+		height: auto;
+		min-height: calc(100vh - #{$nav-height-lg});
+	}
+	
+	.GraphicElement {
+		grid-column: 1;
+		grid-row: 1;
+		margin-bottom: 6vh;
+	}
+
+	.content-container {
+		grid-column: 1 / span 4;
+		
+		@media (min-width: $lg) {
+			grid-row: 1 / span 2;
+			grid-column: 1 / span 3;
+			@include flex(column,nowrap,flex-end,left);
+		}
+
+		.content> *:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.FlexibleMedia {
+		position: relative;
+		grid-column: span 4;
+		height: 0;
+		padding-top: 56.25%;
+		
+		@media (min-width: $lg) {
+			height: auto;
+			padding-top: 0;
+			grid-column: 4 / span 5;
+			grid-row: 1 / span 2;
+		}
+	}
+
+
+	// InView animations
+	.inview {
+		&.GraphicElement 	{
+			transition-delay: 0.4s;
+		}
+		&.content-container {
+			transition-delay: 0.8s;
+		}
+		&.FlexibleMedia 	{
+			transition-delay: 0.3s;
+			// transform: translateX(10vw);
+		}
+	}
+
+	.inview.inview-active {
+		&.GraphicElement 	{
+		}
+		&.content-container {
+		}
+		&.FlexibleMedia 	{ 
+			// transform: translateX(0);
+		}
+	}
+}

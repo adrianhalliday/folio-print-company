@@ -1,0 +1,36 @@
+/*--------------------------------------------------------------
+# content-page-intro
+--------------------------------------------------------------*/
+
+.building--block.content-page-intro {
+	grid-template-rows: auto;
+	// padding-top: calc(#{$padding-vertical} + var(--nav-height));
+	padding-top: calc(var(--padding-container) + var(--nav-height));
+	padding-bottom: 0;
+
+	.content {
+		display: grid;
+		grid-column: 1 / span 6;
+		grid-row: 1;
+		align-items: center;
+
+		h1 {
+			margin-bottom: 0;
+		}
+	}
+
+	.GraphicElement {
+		display: none;
+
+		@media (min-width: $md) {
+			display: block;
+			grid-column: 8;
+			grid-row: 1;
+		}
+	}
+
+	.divider--line {
+		grid-column: 1 / span 8;
+		grid-row: 2;
+	}
+}

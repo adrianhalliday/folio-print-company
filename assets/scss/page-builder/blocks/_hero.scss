@@ -1,0 +1,61 @@
+/*--------------------------------------------------------------
+# hero
+--------------------------------------------------------------*/
+
+.building--block.hero {
+	padding: 0 !important;
+	height: var(--100vh);
+
+	.hero {
+		&--overlay {
+			display: grid;
+			grid-column: 1 / -1;
+			align-items: end;
+			margin-left: var(--negative-margin);
+			margin-right: var(--negative-margin);
+			padding: var(--padding-container);
+			position: relative;
+
+			&--bg {
+				@include absoluteFull();
+				background-color: $lavender;
+				opacity: 1;
+				animation: hero-animation 1.6s linear forwards 1.4s;
+				z-index: 1;
+			}
+
+			.logo--container {
+				position: relative;
+				z-index: 5;
+			}
+		}
+		
+		&--video {
+			position: absolute;
+			top: 0;
+			height: 100%;
+			left: var(--negative-margin);
+			width: 100vw;
+			object-fit: cover;
+			object-position: center;
+
+			&:after {
+				content: '';
+				display: block;
+				@include absoluteFull();
+				background-color: rgba($lavender, .3);
+			}
+		}
+	}
+
+}
+
+@keyframes hero-animation {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		// mix-blend-mode: lighten;
+	}
+}

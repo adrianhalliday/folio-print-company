@@ -1,0 +1,67 @@
+/*--------------------------------------------------------------
+# client-logos
+--------------------------------------------------------------*/
+
+.building--block.client-logos {
+	padding-top: 0;
+
+	.container {
+		grid-column: 1 / -1;
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0;
+		// @media (min-width: $md) { grid-template-columns: repeat(3, 1fr); }
+		@media (min-width: $md) { grid-template-columns: repeat(4, 1fr); }
+		// @media (min-width: $xxl) { grid-template-columns: repeat(6, 1fr); }
+	}
+
+	.client-logo {
+		display: grid;
+		align-content: center;
+		justify-content: center;
+		position: relative;
+		height: 0;
+		padding-top: 70%;
+		border-bottom: 1px solid $black;
+		opacity: 0;
+		transition: opacity 0.6s ease;
+
+		@for $i from 1 to 40 {
+			&:nth-child(#{$i}) {
+				transition-delay: $i * .1s + .2s;
+			}
+		}
+
+		&.inview-active {
+			opacity: 1;
+		}
+
+		.dummy-logo {
+			background: linear-gradient(108deg, rgba(240,240,240,1) 10%, rgb(248, 248, 248) 35%, rgba(240,240,240,1) 60%);
+			background-size: 200%;
+			background-position: -100% 0;
+			animation: preloadAnimation 1.2s infinite .7s;
+		}
+
+		.dummy-logo,
+		img {
+			position: absolute;
+			left: 18%;
+			top: 30%;
+			width: 64%;
+			height: 40%;
+			object-fit: contain;
+			object-position: center;
+		}
+	}
+}
+
+@keyframes preloadAnimation {
+    from {
+        background-position: -100% 0
+    }
+    to {
+        background-position: 100% 0
+    }
+}

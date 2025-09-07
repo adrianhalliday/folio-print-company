@@ -1,0 +1,38 @@
+/*--------------------------------------------------------------
+# 404 page
+--------------------------------------------------------------*/
+
+.building--block.error {
+	height: 100vh;
+	height: var(--100vh);
+	align-items: center;
+
+	.content {
+		text-align: center;
+	}
+
+	h1,h2,h3 {
+		max-width: 100%;
+	}
+
+	span.odometer {
+		&.odometer-auto-theme, 
+		&.odometer-theme-default {
+			margin-bottom: 0;
+			font-family: inherit!important;
+			// line-height: 1.1em;
+
+			span {
+				margin-bottom: 0;
+			}
+			
+			.odometer-inside {
+				margin-left: -0.06ch;
+			}
+			
+			.odometer-digit {
+				letter-spacing: -0.05ch;
+			}
+		}
+	}
+}

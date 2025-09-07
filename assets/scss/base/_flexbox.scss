@@ -1,0 +1,61 @@
+.container-fluid,
+.container {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.container-fluid {
+	// padding-right: $padding-container;
+	// padding-left: $padding-container;
+}
+
+.flex--row {
+	@include flex(row,wrap);
+	box-sizing: border-box;
+	flex: 0 1 auto;
+	// margin-right: -$padding-container;
+	// margin-left: -$padding-container;
+}
+
+.flex--column {
+	box-sizing: border-box;
+	flex: 1 0 0;
+	max-width: 100%;
+	// padding-right: $padding-container;
+	// padding-left: $padding-container;
+}
+
+.start-xs {
+	justify-content: flex-start;
+	text-align: start;
+}
+
+.center-xs {
+	justify-content: center;
+	text-align: center;
+}
+
+.end-xs {
+	justify-content: flex-end;
+	text-align: end;
+}
+
+.top-xs {
+	align-items: flex-start;
+}
+
+.middle-xs {
+	align-items: center;
+}
+
+.bottom-xs {
+	align-items: flex-end;
+}
+
+.around-xs {
+	justify-content: space-around;
+}
+
+.between-xs {
+	justify-content: space-between;
+}

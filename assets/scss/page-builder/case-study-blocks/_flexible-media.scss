@@ -1,0 +1,11 @@
+/*--------------------------------------------------------------
+# case-study-flexible-media
+--------------------------------------------------------------*/
+
+.building--block.case-study-flexible-media {
+	display: block;
+	padding-top: 0;
+	@media (max-width: $max-md) {
+		padding-bottom: Max(2rem, 2.5vmax) !important;
+	}
+}

@@ -1,0 +1,44 @@
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_OPTIONS='--openssl-legacy-provider' nuxt",
+    "build": "NODE_OPTIONS='--openssl-legacy-provider' nuxt build",
+    "start": "NODE_OPTIONS='--openssl-legacy-provider' nuxt start",
+    "generate": "NODE_OPTIONS='--openssl-legacy-provider' nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/apollo": "^4.0.1-rc.5",
+    "@nuxtjs/gtm": "^2.4.0",
+    "@nuxtjs/redirect-module": "^0.3.1",
+    "animated-number-vue": "^1.0.0",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-http": "^1.5.17",
+    "core-js": "^3.9.1",
+    "graphql-tag": "^2.12.6",
+    "nuxt": "^2.15.8",
+    "nuxt-ssr-cache": "^1.5.2",
+    "odometer": "^0.4.8",
+    "swiper": "^5.4.5",
+    "v-odometer": "^2.0.1",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-fragment": "^1.5.2",
+    "vue-odometer": "^1.0.2",
+    "vueinview": "^1.0.7"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.2.2",
+    "node-sass": "^7.0.1",
+    "sass": "^1.32.7",
+    "sass-loader": "^10.1.1"
+  },
+  "browserslist": [
+    ">0.7%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all",
+    "last 3 version"
+  ]
+}

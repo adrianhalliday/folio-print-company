@@ -1,0 +1,45 @@
+/*--------------------------------------------------------------
+# Layout Builder Row styles
+--------------------------------------------------------------*/
+
+.building--row {
+	height: auto;
+	position: relative;
+	padding-left: var(--padding-container);
+	padding-right: var(--padding-container);
+	overflow: hidden;
+
+	&:not(footer) { z-index: 1; }
+
+	@media (min-width: $lg) {
+		&.h-100 {
+			height: var(--100vh);
+
+			&:first-child .building--block {
+				padding-top: var(--nav-height);
+			}
+		}
+
+		&.h-70 {
+			height: 70vh;
+		}
+
+		&.h-50 {
+			height: 50vh;
+		}
+
+		&.cols-50-50 {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: var(--padding-container);
+
+			@media (min-width: $lg) {
+				grid-template-columns: repeat(8, 1fr);
+			}
+
+			.building--block {
+				grid-column: span 4;
+			}
+		}
+	}
+}

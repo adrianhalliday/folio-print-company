@@ -1,0 +1,14 @@
+.GraphicElement {
+	width: 100%;
+	display: block;
+
+	@media (min-width: $md) and (max-width: $max-lg) {
+		max-width: 14vw;
+	}
+
+	svg {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+}

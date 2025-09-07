@@ -1,0 +1,67 @@
+/*--------------------------------------------------------------
+# Global inview animation definitions
+--------------------------------------------------------------*/
+
+.inview {
+
+	.content,
+	&.content,
+	&.content-container {
+		opacity: 0;
+		transition: opacity .8s ease-in-out;
+		
+		&.inview-active {
+			opacity: 1;
+		}
+	}
+	&.inview-active .content {
+		opacity: 1;
+	}
+	
+	.FlexibleMedia,
+	&.FlexibleMedia {
+		opacity: 0;
+		// transform: translateX(50px);
+		transition: opacity 0.8s ease-in-out, transform 0.7s cubic-bezier(0.79,0.14,0.15,0.86);
+		
+		&.inview-active {
+			opacity: 1;
+			// transform: translateX(0px);
+		}
+	}
+	&.inview-active .FlexibleMedia {
+		opacity: 1;
+	}
+
+	.divider,
+	&.divider {
+		&--bar {
+			opacity: 0;
+			transition: opacity 0.4s ease;
+		}
+
+		&--line {
+			transform: scaleX(0);
+			transform-origin: top left;
+			transition: transform 0.5s cubic-bezier(0.79,0.14,0.15,0.86);
+		}
+	}
+	&.inview-active { 
+		.divider,
+		&.divider {
+			&--bar { opacity: 1; }
+			&--line { transform: scaleX(1); }
+		}
+	}
+
+	&.case-study--tile {
+		.case-study--tile--inner {
+			opacity: 0;
+			transition: opacity .8s ease-in-out;
+		}
+
+		&:nth-child(even) .case-study--tile--inner { transition-delay: .4s; }
+		
+		&.inview-active .case-study--tile--inner { opacity: 1; }
+	}
+}

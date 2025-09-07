@@ -1,0 +1,78 @@
+/*--------------------------------------------------------------
+# case-study-index
+--------------------------------------------------------------*/
+
+.building--block.case-study-index {
+	min-height: 50vh;
+	padding-top: 0;
+	grid-template-columns: 1fr;
+	gap: 0;
+	
+	.container {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0;
+
+		@media (min-width: $md) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.case-study {
+		&--tile {
+			display: grid;
+
+			&--inner {
+				display: block;
+				padding-top: var(--padding-vertical);
+				padding-bottom: var(--padding-vertical);
+			}
+
+			@media (min-width: $md) {
+				&:nth-child(odd) .case-study--tile--inner {
+					padding-right: 2rem;
+				}
+				&:nth-child(even) .case-study--tile--inner {
+					padding-left: 2rem;
+				}
+			}
+
+			&--image {
+				margin-bottom: var(--padding-vertical);
+				height: 0;
+				padding-top: 66.66%;
+				position: relative;
+
+				img {
+					@include absoluteFull();
+					object-fit: cover;
+					object-position: center;
+				}
+			}
+
+			&--details {
+				@media (min-width: $md) {
+					display: grid;
+					grid-template-columns: 1fr 1.5fr;
+				}
+
+				p {
+					font-family: $font-mono-slim;
+					font-weight: 300;
+					@include font-sizes(1.6rem, 1.6rem, 1.7rem, Max(1.1vw,1.8rem));
+					line-height: 1.6;
+
+					@media (max-width: $max-md) {
+						margin-bottom: 0;
+					}
+				}
+			}
+
+			.divider--line {
+				align-self: end;
+				margin-top: auto;
+			}
+		}
+	}
+}

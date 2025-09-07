@@ -1,0 +1,124 @@
+.display-contents {
+	display: contents;
+}
+
+// Display None/Block/Flex Classes e.g.:
+// .d-xs-none
+// .d-md-block
+$breakpoints: ("xs": "xs", "38em": "sm", "62em": "md", "75em": "lg", "87.5em": "xl", "112em": "xxl");
+
+.d {
+
+	@each $units, $name in $breakpoints {
+		@if $units !="xs" {
+			&-#{$name} {
+				@media(min-width: $units) {
+					&-block {
+						display: block !important;
+					}
+
+					&-flex {
+						display: flex !important;
+					}
+
+					&-none {
+						display: none !important;
+					}
+				}
+			}
+		}
+
+		@else {
+			&-#{$name} {
+
+				&-block {
+					display: block !important;
+				}
+
+				&-flex {
+					display: flex !important;
+				}
+
+				&-none {
+					display: none !important;
+				}
+			}
+		}
+	}
+}
+
+// Zero Vertical Padding Classes e.g.:
+// .nopad
+// .nopad--top
+// .nopad--bottom
+// .nopad--xs
+// .nopad--xs--top
+// .nopad--xs--bottom
+
+.building--row.nopad {
+	.building--block {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	@each $units, $name in $breakpoints {
+		&--#{$name} {
+			@media(min-width: $units) {
+				.building--block {
+					padding-top: 0;
+					padding-bottom: 0;
+				}
+
+				&--top {
+					.building--block {
+						padding-top: 0;
+					}
+				}
+
+				&--bottom {
+					.building--block {
+						padding-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Add Vertical Padding Classes e.g.:
+// .pad
+// .pad--top
+// .pad--bottom
+// .pad--xs
+// .pad--xs--top
+// .pad--xs--bottom
+
+.building--row.pad {
+	.building--block {
+		padding-top: $padding-vertical !important;
+		padding-bottom: $padding-vertical !important;
+	}
+
+	@each $units, $name in $breakpoints {
+		&--#{$name} {
+			@media(min-width: $units) {
+				.building--block {
+					padding-top: $padding-vertical !important;
+					padding-bottom: $padding-vertical !important;
+				}
+
+				&--top {
+					.building--block {
+						padding-top: $padding-vertical !important;
+					}
+				}
+
+				&--bottom {
+					.building--block {
+						padding-bottom: $padding-vertical !important;
+					}
+				}
+			}
+		}
+	}
+}

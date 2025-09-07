@@ -1,0 +1,179 @@
+/*--------------------------------------------------------------
+# Global generic styles
+--------------------------------------------------------------*/
+
+/* Inherit box-sizing to more easily change it's value on a component level.
+@link http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%; // Set REM unit to 1rem = 10px for easier sizing of text
+}
+
+.vh-100 {
+	height: 100vh;
+}
+
+.vh-70 {
+	height: 70vh;
+}
+
+.vh-50 {
+	height: 50vh;
+}
+
+.h-full {
+	height: 100%;
+}
+
+
+.hasBgImage {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+img {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+
+	&.fit {
+		height: 100%;
+		object-position: center;
+		
+		&.cover {
+			object-fit: cover;
+		}
+
+		&.contain {
+			object-fit: contain;
+		}
+
+		&.top {
+			object-position: center top;
+		}
+		
+		&.bottom {
+			object-position: center bottom;
+		}
+		
+		&.left {
+			object-position: left center;
+		}
+		
+		&.right {
+			object-position: right center;
+		}
+	}
+}
+
+.fade-on-scroll {
+	opacity: 1;
+	transition: opacity 0.5s ease-in-out;
+
+	&.faded {
+		opacity: 0;
+	}
+}
+
+#page {
+	background-color: darken($lavender, 6);
+	overflow-x: hidden;
+}
+
+.page-enter-active {
+	transition: transform 0.64s cubic-bezier(0.79,0.14,0.15,0.86) 0.2s;
+}
+.page-leave-active {
+	transition: transform 0.64s cubic-bezier(0.79,0.14,0.15,0.86);
+}
+
+.page-enter {
+  transform: translateX(101vw);
+
+  &-to { transform: translateX(0); }
+}
+
+.page-leave {
+	transform: translateX(0);
+
+	&-to { 
+		transform: translateX(-101vw);
+
+		.building--row { 
+			opacity: 0;
+			transition: opacity 0.54s cubic-bezier(0.79,0.14,0.15,0.86);
+		}
+	}
+}
+
+/*--------------------------------------------------------------
+# Colour Schemes
+--------------------------------------------------------------*/
+
+.bg {
+	@each $label, $map in $bg-colours {
+
+		&-#{$label} {
+			background-color: map-get($map, bg);
+
+			h1, h2, h3, h4, h5, h6, p, a, span {
+				color: map-get($map, text);
+				span {
+					color: map-get($map, text);
+				}
+			}
+
+			.divider--line {
+				background-color: map-get($map, divider);
+			}
+
+			.GraphicElement {
+				.inner,
+				.hovered .inner.back,
+				.default .inner.back,
+				.inner.front {
+					background-color: map-get($map, graphic);
+				}
+				
+				.inner.back {
+					background-color: map-get($map, bg);
+				}
+
+				.svg-fill {
+					fill: map-get($map, graphic );
+
+					&.alt {
+						fill: map-get($map, bg);
+					}
+				}
+			}
+
+			a.cta,
+			.cta {
+				span {
+					color: map-get($map, text);
+					background: map-get($map, text);
+					background: linear-gradient(90deg, $violet 0%, $violet 50%, map-get($map, text) 50%, map-get($map, text) 100%);
+					background-size: 220% 100%;
+					background-position: 100% 50%;
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+					transition: background-position 0.8s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+				}
+
+				&:hover span {
+					background-position: 0% 50%;
+				}
+			}
+		}
+	}
+}
+
+

@@ -1,0 +1,12 @@
+/*--------------------------------------------------------------
+# case-study-content
+--------------------------------------------------------------*/
+
+.building--block.case-study-content {
+	display: block;
+	padding-top: 0;
+
+	.divider--line.top+.content {
+		margin-top: var(--padding-container);
+	}
+}

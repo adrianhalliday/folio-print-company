@@ -1,0 +1,43 @@
+/*--------------------------------------------------------------
+# case-study-animated-stats
+--------------------------------------------------------------*/
+
+.building--block.case-study-animated-stats {
+	display: block;
+
+	* {
+		color: $lavender;
+	}
+
+	h2, h2 span {
+		@include font-sizes(13vw, 11vw, 9vw, 7.6vw);
+		max-width: 12ch;
+		margin-bottom: 0;
+	}
+
+	h3 {
+		margin-bottom: 0;
+	}
+
+	.animated-stats--main {
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+		&.inview-active { opacity: 1; }
+	}
+	
+	.odometer {
+		&.odometer-auto-theme, 
+		&.odometer-theme-default {
+			font-family: inherit!important;
+			line-height: 1.1em;
+			
+			.odometer-inside {
+				margin-left: -0.06ch;
+			}
+			
+			.odometer-digit {
+				letter-spacing: -0.05ch;
+			}
+		}
+	}
+}

@@ -1,0 +1,38 @@
+/*--------------------------------------------------------------
+# section-heading
+--------------------------------------------------------------*/
+
+.building--block.section-heading {
+	grid-template-rows: auto;
+	padding-bottom: 0;
+
+	.content {
+		display: grid;
+		grid-column: 1 / span 6;
+		grid-row: 1;
+		align-items: center;
+
+		h2 { margin-bottom: 0; }
+	}
+
+	.GraphicElement {
+		display: none;
+
+		@media (min-width: $md) {
+			display: block;
+			grid-column: 8;
+			grid-row: 1;
+		}
+	}
+
+	.divider--line {
+		grid-column: 1 / span 8;
+		grid-row: 2;
+	}
+
+	.inview {
+		.content { transition-delay: 0.4s; }
+		.divider--line { transition-delay: 0.7s; }
+		.GraphicElement { transition-delay: 0.9s; }
+	}
+}
