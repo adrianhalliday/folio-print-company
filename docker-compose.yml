@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # Development service
+  frontend-dev:
+    build: .
+    container_name: frontend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NODE_OPTIONS=--openssl-legacy-provider
+      - HOST=0.0.0.0
+      - PORT=3000
+    command: sh -c "NODE_OPTIONS='--openssl-legacy-provider' npx nuxt --hostname 0.0.0.0 --port 3000"
+    network_mode: "bridge"
+
+  # Production service - builds and starts
+  frontend-prod:
+    build: .
+    container_name: frontend-prod
+    ports:
+      - "3001:3000"  # Different port to avoid conflicts
+    environment:
+      - NODE_ENV=production
+      - NODE_OPTIONS=--openssl-legacy-provider
+      - HOST=0.0.0.0
+      - PORT=3000
+    command: sh -c "npm run build && npm start"
+    restart: unless-stopped
+    network_mode: "bridge"
+
+  # Just build service (no server running)
+  frontend-build:
+    build: .
+    container_name: frontend-build
+    volumes:
+      - ./dist:/app/dist  # Mount dist folder to get build output
+      - ./.nuxt:/app/.nuxt  # Mount .nuxt folder
+    environment:
+      - NODE_ENV=production
+      - NODE_OPTIONS=--openssl-legacy-provider
+    command: npm run build
+    network_mode: "bridge"
