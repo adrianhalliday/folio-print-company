@@ -28,8 +28,8 @@ RUN npm cache clean --force && \
 # Copy source code
 COPY . .
 
-# Expose the port (Nuxt.js default is 3000)
-EXPOSE 3000
+# Expose the port dynamically (Cloud Run will set PORT env var)
+EXPOSE $PORT
 
-# Default command (can be overridden by docker-compose)
-CMD ["npm", "run", "dev"]
+# For Cloud Run compatibility - build then start production server
+CMD ["sh", "-c", "npm run build && NODE_OPTIONS='--openssl-legacy-provider' npx nuxt start --hostname 0.0.0.0 --port $PORT"]
