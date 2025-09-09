@@ -42,35 +42,34 @@ export default {
         outerHeight: outerHeight
       })
     },
-    initLocalisation() {
-      let self = this
+    // initLocalisation() {
+    //   let self = this
 
-      Weglot.initialize({
-        api_key: 'wg_30e337d68cbf4419cdb18d365af010339',
-        /* switchers: [
-          {
-            style: {
-                full_name: false,
-                // with_name: false,
-                // is_dropdown: false,
-                // with_flags: true,
-                // flag_type: "circle",
-                // invert_flags: false
-            },
-            location: {
-              target: ".header--lang",
-              sibling: null
-            },
-          }
-        ], */
-        excluded_blocks: [
-          {
-            value: ".no-translate" // All elements with this class won't be translated
-          }
-        ],
-        hide_switcher: true,
-      })
-    },
+    //   Weglot.initialize({
+    //     /* switchers: [
+    //       {
+    //         style: {
+    //             full_name: false,
+    //             // with_name: false,
+    //             // is_dropdown: false,
+    //             // with_flags: true,
+    //             // flag_type: "circle",
+    //             // invert_flags: false
+    //         },
+    //         location: {
+    //           target: ".header--lang",
+    //           sibling: null
+    //         },
+    //       }
+    //     ], */
+    //     excluded_blocks: [
+    //       {
+    //         value: ".no-translate" // All elements with this class won't be translated
+    //       }
+    //     ],
+    //     hide_switcher: true,
+    //   })
+    // },
   },
   mounted() {
     this.$store.commit('setMobile')
